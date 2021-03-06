@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries> 
+        <ResourceDictionary Source="CircleButton.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="HeaderLabel.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="ZoomButtonStyle.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

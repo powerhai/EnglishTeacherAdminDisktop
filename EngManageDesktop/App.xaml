@@ -1,0 +1,15 @@
+﻿<unity:PrismApplication  x:Class="EngManageDesktop.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:EngManageDesktop"
+             xmlns:unity="http://prismlibrary.com/">
+    <unity:PrismApplication.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Index.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Images/Index.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </unity:PrismApplication.Resources>
+</unity:PrismApplication>

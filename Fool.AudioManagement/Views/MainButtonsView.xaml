@@ -1,0 +1,17 @@
+﻿<Expander x:Class="Fool.AudioManagement.Views.MainButtonsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Fool.AudioManagement.Views"
+             xmlns:prism="http://prismlibrary.com/"            
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"  IsExpanded="True"
+             d:DesignHeight="300" d:DesignWidth="300" Header="Audio Management" Foreground="White" FontWeight="Bold">
+    <ItemsControl>
+        <Button>Text Audio</Button>
+        <Button Command="{Binding GoSentenceAudioMgmtCommand}">Sentence Audio</Button>
+        <Button>Word Audio</Button>
+    </ItemsControl>
+   
+</Expander>

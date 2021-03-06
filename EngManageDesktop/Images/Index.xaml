@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries> 
+        <ResourceDictionary Source="PlayImage.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="PauseImage.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="AddImage.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Clean.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Import.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Format.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Source.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Document.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Take.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Translate.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Save.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Back.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Audio.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="New.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Edit.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Remove.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="None.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Modify.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="ReadyToUpload.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Uploaded.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="HasMusic.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

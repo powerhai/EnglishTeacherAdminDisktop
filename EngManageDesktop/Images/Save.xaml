@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DrawingBrush x:Key="PicSave">
+        <DrawingBrush.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                <GeometryDrawing Brush="#FF000000" Geometry="F1 M1024,1024z M0,0z M806.816,16L736,16 736,288 128,288 128,16 80.688,16C43.008,16,16,41.792,16,77.968L16,946.032C16,982.192,43.008,1008,80.688,1008L943.296,1008C980.976,1008,1008,982.192,1008,946.032L1008,225.392 806.816,16z M896,896L128,896 128,400 896,400 896,896z" />
+                <GeometryDrawing Brush="#FF000000" Geometry="F1 M1024,1024z M0,0z M178.976,734.048L845.04,734.048 845.04,789.552 178.976,789.552 178.976,734.048z" />
+                <GeometryDrawing Brush="#FF000000" Geometry="F1 M1024,1024z M0,0z M178.976,609.152L845.04,609.152 845.04,664.656 178.976,664.656 178.976,609.152z" />
+                <GeometryDrawing Brush="#FF000000" Geometry="F1 M1024,1024z M0,0z M345.6,235.392L345.488,67.952 623.008,67.952 623.008,234.464z" />
+                <GeometryDrawing Brush="#FF000000" Geometry="F1 M1024,1024z M0,0z M845.024,539.744L178.976,539.744 178.976,484.24 845.04,484.24 845.04,539.744z" />
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+</ResourceDictionary>

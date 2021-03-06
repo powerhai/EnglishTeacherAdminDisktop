@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DrawingBrush x:Key="PicFormat">
+        <DrawingBrush.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                <GeometryDrawing Brush="#FF707070" Geometry="F1 M1024,1024z M0,0z M128,171L128,214 896,214 896,128 128,128 128,171z M468,341L468,384 896,384 896,298 468,298 468,341z M128,512L128,683 213.4,597.4 299,512 213.4,426.6 128,341 128,512z M468.8,470.6C468.4,472,468.2,491.6,468.4,514L469,555 682.6,555.6 896,556 896,468 683,468C512,468,469.6,468.6,468.8,470.6z M468,683L468,726 896,726 896,640 468,640 468,683z M128,853L128,896 896,896 896,810 128,810 128,853z" />
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+</ResourceDictionary>

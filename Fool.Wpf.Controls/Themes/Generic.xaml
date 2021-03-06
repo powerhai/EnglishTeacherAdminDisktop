@@ -1,0 +1,30 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Fool.Wpf.Controls">
+    <Style TargetType="{x:Type local:RangeShowbar}">
+        <Setter Property="Foreground" Value="Chartreuse"></Setter>
+        <Setter Property="Background" Value="Silver"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RangeShowbar}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"  
+                            BorderThickness="{TemplateBinding BorderThickness}"> 
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="{TemplateBinding LeftMargin}" Grid.Column="0"></Border>
+                            <Rectangle Fill="{TemplateBinding Foreground}"  Grid.Column="1" ></Rectangle>
+                            <Border Width="{TemplateBinding RightMargin}" Grid.Column="2"></Border>
+                        </Grid>
+                       
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

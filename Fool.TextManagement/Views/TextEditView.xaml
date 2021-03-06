@@ -1,0 +1,324 @@
+﻿<UserControl x:Class="Fool.TextManagement.Views.TextEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+              mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="600"      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:controls="clr-namespace:Fool.Wpf.Controls;assembly=Fool.Wpf.Controls"
+             xmlns:views="clr-namespace:Fool.TextManagement.Views"
+             xmlns:common="clr-namespace:Fool.Common;assembly=Fool.Common"
+             xmlns:models="clr-namespace:Fool.TextManagement.Models"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             MinHeight="520"
+             Padding="20"
+             x:Name="Root"
+             >
+    <UserControl.Resources>
+
+
+        <ControlTemplate x:Key="SenWithLocalAudio"  TargetType="{x:Type ListViewItem}">
+            <Border x:Name="Bd" SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="1"></RowDefinition>
+
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <GridViewRowPresenter Grid.Row="0" Content="{TemplateBinding Content}"
+       Columns="{TemplateBinding GridView.ColumnCollection}"/>
+
+
+
+                    <controls:RangeShowbar Height="2" x:Name="Showbar" Foreground="OrangeRed" Maximum="{Binding Path=DataContext.Length,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"  Grid.Row="2"
+                              LowerValue="{Binding Start, Mode=TwoWay}" 
+                              HigherValue="{Binding End, Mode=TwoWay}"></controls:RangeShowbar>
+
+
+                  
+
+                </Grid>
+
+
+            </Border>
+            <ControlTemplate.Triggers>
+                <!--<Trigger Property="IsSelected" Value="True">
+                    <Setter TargetName="CnBlock" Property="Visibility" Value="Hidden"></Setter>
+                    <Setter TargetName="CnBox" Property="Visibility" Value="Visible"></Setter>
+                    <Setter TargetName="BtnPlay" Property="Visibility" Value="Visible"></Setter>
+                    <Setter TargetName="EditorSlider" Property="Visibility" Value="Visible"></Setter>
+                    <Setter TargetName="Showbar" Property="Visibility" Value="Hidden"></Setter>
+                </Trigger>-->
+
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#D4E9FE"/>
+                </Trigger>
+
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="SenWithBaiduAudio"  TargetType="{x:Type ListViewItem}">
+            <Border x:Name="Bd" SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="1"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <GridViewRowPresenter Grid.Row="0" Content="{TemplateBinding Content}"
+       Columns="{TemplateBinding GridView.ColumnCollection}"/>
+
+
+
+
+                    <Button x:Name="BtnPlay"  Visibility="Collapsed" Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Style="{DynamicResource ZoomButtonStyle}"   Background="{DynamicResource PicPlay}" Command="{Binding Path=DataContext.PlaySentenceCommand,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" ToolTip="Format Text">Format Text</Button>
+
+                </Grid>
+
+
+            </Border>
+            <ControlTemplate.Triggers>
+
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter TargetName="BtnPlay" Property="Visibility" Value="Visible"></Setter>
+                </Trigger>
+
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#D4E9FE"/>
+                </Trigger>
+
+
+
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="ListViewItemStyle1" TargetType="{x:Type ListViewItem}">
+            <Setter Property="VerticalContentAlignment"  Value="Stretch"></Setter>
+            <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
+            <Setter Property="Padding"  Value="0"></Setter>
+            <Setter Property="Margin"  Value="0"></Setter>
+            <Style.Triggers>
+
+
+                <MultiDataTrigger >
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding AudioStatus}" Value="{x:Static models:AudioStatus.HasAudio}"></Condition>
+                        <Condition Binding="{Binding IsBaiduAudio}" Value="True"></Condition>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Template" Value="{DynamicResource SenWithBaiduAudio}"></Setter>
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger >
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding AudioStatus}" Value="{x:Static models:AudioStatus.HasAudio}"></Condition>
+                        <Condition Binding="{Binding IsBaiduAudio}" Value="False"></Condition>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Template" Value="{DynamicResource SenWithLocalAudio}"></Setter>
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+
+                <MultiDataTrigger >
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding AudioStatus}" Value="{x:Static models:AudioStatus.HasAudio}"></Condition>
+                        <Condition Binding="{Binding IsBaiduAudio}" Value="False"></Condition>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Template" Value="{DynamicResource SenWithLocalAudio}"></Setter>
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+
+            </Style.Triggers>
+
+        </Style>
+        <common:Bool2VisibilityConverter x:Key="Bool2VisibilityConverter" />
+        <common:Bool2InverseConverter x:Key="Bool2InverseConverter" ></common:Bool2InverseConverter>
+        <common:Bool2InverseVisibilityConverter x:Key="Bool2InverseVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid IsEnabled="{Binding IsBusy, Converter={StaticResource Bool2InverseConverter}}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+       
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="3*"/> 
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="15"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0">Publisher</TextBlock>
+            <ComboBox IsTextSearchEnabled="True" Text="{Binding Publisher}"    Grid.Column="1" IsEditable="True" DisplayMemberPath="Title" SelectedValuePath="Id"  ItemsSource="{Binding Publishers}">
+
+            </ComboBox>
+            <TextBlock Grid.Row="0" Grid.Column="3">Book</TextBlock>
+            <ComboBox IsTextSearchEnabled="True" Grid.Column="4"  Text="{Binding Book}"  IsEditable="True" DisplayMemberPath="Title" SelectedValuePath="Id"  ItemsSource="{Binding Books}"></ComboBox>
+            <TextBlock Grid.Row="0" Grid.Column="6">Title</TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="7"  Text="{Binding Title}"></TextBox>
+
+            <TextBlock Grid.Row="2">Text</TextBlock>
+            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" Height="150" TextWrapping="Wrap"
+  AcceptsReturn="True" Visibility="{Binding IsDocumentDisplay, Converter={StaticResource Bool2InverseVisibilityConverter}}"
+  VerticalScrollBarVisibility="Visible"  Text="{Binding Text,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+            <FlowDocumentScrollViewer Grid.Row="2" Grid.Column="1" Visibility="{Binding IsDocumentDisplay,Converter={StaticResource Bool2VisibilityConverter}}" Grid.ColumnSpan="7" Height="350" Document="{Binding Document}"></FlowDocumentScrollViewer>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="2,5" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7">
+                <Button Style="{DynamicResource ZoomButtonStyle}"   Background="{DynamicResource PicFormat}" Command="{Binding FormatTextCommand}" ToolTip="Format Text">Format Text</Button>
+                <Border Width="10"/>
+                <Button Style="{DynamicResource ZoomButtonStyle}"   Background="{DynamicResource PicTake}" Command="{Binding AnalyseTextCommand}" ToolTip="Analyse Text">Analyse Text</Button>
+                <Border Width="10"/>
+                <Button ToolTip="Display source Text"  Style="{DynamicResource ZoomButtonStyle}"  Background="{DynamicResource PicSource}" Command="{Binding DisplaySourceCommand}" Visibility="{Binding Path=IsDocumentDisplay,Converter={StaticResource Bool2VisibilityConverter}}">Display Source</Button>
+                <Border Width="10"/>
+                <Button ToolTip="Display document"  Style="{DynamicResource ZoomButtonStyle}"  Background="{DynamicResource PicDocument}" Command="{Binding DisplayDocumentCommand}" Visibility="{Binding Path=IsDocumentDisplay,Converter={StaticResource Bool2InverseVisibilityConverter}}">Display Document</Button>
+            </StackPanel>
+ 
+ 
+            <TextBlock Grid.Row="4">Audio:</TextBlock>
+            <views:AudioPlayerView Grid.Row="4" Grid.Column="1"  Grid.ColumnSpan="7"></views:AudioPlayerView>
+
+            <TextBlock Grid.Row="6">Sentences:</TextBlock>
+            <ListView x:Name="P_ListView"  Grid.Column="1" Grid.Row="6"  Grid.ColumnSpan="7" ItemContainerStyle="{StaticResource ListViewItemStyle1}" ItemsSource="{Binding SentenceViewSource.View}" IsSynchronizedWithCurrentItem="True">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="40" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Border Width="23" Height="23" x:Name="ImgNone" Visibility="Collapsed" >
+                                            <Border.Background>
+                                                <ImageBrush    ImageSource="{DynamicResource PicNone}"></ImageBrush>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <Button Visibility="Collapsed" x:Name="ImgHas" ToolTip="Display source Text"  Style="{DynamicResource ZoomButtonStyle}" 
+                                                Background="{DynamicResource PicPlay}" Command="{Binding ElementName=Root,Path=DataContext.PlaySentenceCommand}" CommandParameter="{Binding .}"
+                                                 >Display Source</Button>
+
+                                        <Border Width="23" Height="23" x:Name="ImgReady" Visibility="Collapsed" >
+                                            <Border.Background>
+                                                <ImageBrush    ImageSource="{DynamicResource PicReadyToUpload}"></ImageBrush>
+                                            </Border.Background>
+                                        </Border>
+ 
+                                    </Grid>
+
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding AudioStatus}" Value="{x:Static models:AudioStatus.NoneAudio}">
+                                            <Setter TargetName="ImgNone"  Property="Visibility" Value="Visible"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding AudioStatus}" Value="{x:Static models:AudioStatus.HasAudio}">
+                                            <Setter TargetName="ImgHas"  Property="Visibility" Value="Visible"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding AudioStatus}" Value="{x:Static models:AudioStatus.ReadyUpload}">
+                                            <Setter TargetName="ImgHas"  Property="Visibility" Value="Visible"></Setter>
+                                        </DataTrigger> 
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn  Width="300" Header="Sentence">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <TextBlock Text="{Binding Sentence}" VerticalAlignment="Center"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn  Width="300" Header="Chinese">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <TextBox Text="{Binding Chinese}"></TextBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+ 
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <!--音轨调整-->
+            <Grid Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="7" >
+                <Border Background="#FFBDBDBD">
+
+
+                <xctk:RangeSlider Height="15" DataContext="{Binding ElementName=P_ListView,Path=SelectedItem}" Minimum="0" Maximum="{Binding Path=DataContext.Length,Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"  
+                                  LowerValue="{Binding Start, Mode=TwoWay}"
+                                  HigherValue="{Binding End, Mode=TwoWay}" LowerThumbBackground="#FF0043A4" RangeBackground="OrangeRed"
+                                  HigherRangeBackground="#FFBDBDBD" HigherThumbBackground="#FF0E57B0" BorderBrush="#FFA84444" LowerRangeBackground="#FFB4B4B4"
+                                  HigherValueChanged="RangeSlider_OnHigherValueChanged"
+                ></xctk:RangeSlider>
+
+</Border>
+
+
+            </Grid>
+
+
+        </Grid>
+     
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"     Grid.Row="4"  >
+          
+            <Button Style="{StaticResource ZoomButtonStyle}"   Background="{StaticResource PicTranslate}" Command="{Binding TranslateCommand}" ToolTip="Translate Chinese">Analyse Text</Button>
+            <Border Width="10"/>
+            <Button ToolTip="Get Audio"  Style="{DynamicResource ZoomButtonStyle}"  Background="{DynamicResource PicAudio}" Command="{Binding GetAudioCommand}">Display Source</Button>
+            <Border Width="10"/>
+            <CheckBox VerticalContentAlignment="Center" Visibility="{Binding IsEditMode,Converter={StaticResource Bool2VisibilityConverter}}" IsChecked="{Binding UpdateAudio}">Update Audio</CheckBox>
+            <Border Width="10"/>
+            <Button ToolTip="Save"  Style="{DynamicResource ZoomButtonStyle}"  Background="{StaticResource PicSave}" Command="{Binding SaveCommand}">Save</Button>
+        </StackPanel>
+
+
+        <xctk:BusyIndicator Grid.Row="0" IsBusy="{Binding IsBusy}"  Grid.ColumnSpan="10" Grid.RowSpan="10" Margin="-5">
+            <xctk:BusyIndicator.OverlayStyle>
+                <Style TargetType="{x:Type Rectangle}">
+                    <Setter Property="Fill" Value="#6F808080"></Setter>
+                </Style>
+            </xctk:BusyIndicator.OverlayStyle>
+            <ContentControl  />
+        </xctk:BusyIndicator>
+
+
+    </Grid>
+</UserControl>

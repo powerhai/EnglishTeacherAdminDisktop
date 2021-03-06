@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Fool.AudioManagement.Views.AudioPlayerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Fool.AudioManagement.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <Slider Maximum="{Binding Length}"  Value="{Binding Current}"  ValueChanged="RangeBase_OnValueChanged"    PreviewMouseDown="Slider_OnMouseDown" PreviewMouseUp="Slider_OnMouseUp"/>
+        <Button Style="{DynamicResource ZoomButtonStyle}" Background="{DynamicResource PicPlay}" Grid.Column="2" Command="{Binding PlayCommand}"></Button>
+        <Button Style="{DynamicResource ZoomButtonStyle}" Background="{DynamicResource PicPause}" Grid.Column="4" Command="{Binding PauseCommand}"></Button>
+        <Button Style="{DynamicResource ZoomButtonStyle}" Background="{DynamicResource PicAddImage}" Grid.Column="6" Command="{Binding ChooseAudioFileCommand}"></Button>
+    </Grid>
+</UserControl>

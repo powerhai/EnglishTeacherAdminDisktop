@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Fool.AudioManagement.Views.SentenceAudioManageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Fool.AudioManagement.Views"
+             
+             xmlns:prism="http://prismlibrary.com/"             
+              
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+  
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5"/> 
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Label  Style="{DynamicResource ResourceKey=LabelStyle}">Sentence Audio Management</Label>
+        <Border Grid.Row="4"   >
+             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Command="{Binding GoAudioEditCommand}">Generate Audio</Button>
+                 <Border Width="10"/>
+                <Button>New Audio</Button>
+             </StackPanel> 
+        </Border>
+    </Grid>
+</UserControl>

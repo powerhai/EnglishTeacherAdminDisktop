@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<DrawingBrush x:Key="PicClean" Stretch="Uniform">
+		<DrawingBrush.Drawing>
+			<DrawingGroup>
+				<DrawingGroup.Children>
+					<GeometryDrawing Geometry="M 58.9531,20.5922L 58.9531,47.3542L 87.088,47.3542L 87.088,28.8399L 80.8761,20.5922L 58.9531,20.5922 Z ">
+						<GeometryDrawing.Pen>
+							<Pen Thickness="2" MiterLimit="2.75" Brush="#FF5F5F5F"/>
+						</GeometryDrawing.Pen>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 81.0223,20.4167L 81.0223,29.2793L 87.1624,29.2793">
+						<GeometryDrawing.Pen>
+							<Pen Thickness="2" MiterLimit="2.75" Brush="#FF5F5F5F"/>
+						</GeometryDrawing.Pen>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 61.5108,27.173L 78.4746,27.173">
+						<GeometryDrawing.Pen>
+							<Pen Thickness="2" LineJoin="Round" Brush="#FF5F5F5F"/>
+						</GeometryDrawing.Pen>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 61.5108,34.6312L 84.5393,34.6312">
+						<GeometryDrawing.Pen>
+							<Pen Thickness="2" LineJoin="Round" Brush="#FF5F5F5F"/>
+						</GeometryDrawing.Pen>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 61.4377,41.914L 84.6779,41.914">
+						<GeometryDrawing.Pen>
+							<Pen Thickness="2" LineJoin="Round" Brush="#FF5F5F5F"/>
+						</GeometryDrawing.Pen>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 66.2299,20.5L 66.2299,14.5334L 60.018,6.28567L 38.095,6.28566L 38.095,33.0477L 58.9124,33.0477L 58.9124,24.3333">
+						<GeometryDrawing.Pen>
+							<Pen Thickness="2" MiterLimit="2.75" Brush="#FF5F5F5F"/>
+						</GeometryDrawing.Pen>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 60.1641,6.11017L 60.1641,14.9728L 66.3043,14.9728">
+						<GeometryDrawing.Pen>
+							<Pen Thickness="2" MiterLimit="2.75" Brush="#FF5F5F5F"/>
+						</GeometryDrawing.Pen>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 40.6527,12.8665L 57.6165,12.8665">
+						<GeometryDrawing.Pen>
+							<Pen Thickness="2" LineJoin="Round" Brush="#FF5F5F5F"/>
+						</GeometryDrawing.Pen>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 40.6527,20.3248L 63.6812,20.3248">
+						<GeometryDrawing.Pen>
+							<Pen Thickness="2" LineJoin="Round" Brush="#FF5F5F5F"/>
+						</GeometryDrawing.Pen>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 40.5796,27.6075L 58.9541,27.6075">
+						<GeometryDrawing.Pen>
+							<Pen Thickness="2" LineJoin="Round" Brush="#FF5F5F5F"/>
+						</GeometryDrawing.Pen>
+					</GeometryDrawing>
+				</DrawingGroup.Children>
+			</DrawingGroup>
+		</DrawingBrush.Drawing>
+	</DrawingBrush>
+</ResourceDictionary>

@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="Fool.TextManagement.Views.TextManageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"       
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+              mc:Ignorable="d"   xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             d:DesignHeight="300" d:DesignWidth="300"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+
+    <Grid  x:Name="RootGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5"/>
+
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Label Style="{DynamicResource LabelStyle}" Grid.ColumnSpan="3" >Text Management</Label>
+        <GroupBox Header="Books" Grid.Row="1" Visibility="Collapsed">
+            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding BooksView.View}" VirtualizingPanel.IsVirtualizingWhenGrouping="True"  VirtualizingPanel.IsContainerVirtualizable="True"  VirtualizingStackPanel.IsVirtualizing="True"  VirtualizingStackPanel.VirtualizationMode="Recycling">
+                    <ItemsControl.GroupStyle>
+                        <GroupStyle>
+                           
+                            <GroupStyle.ContainerStyle>
+                                <Style TargetType="GroupItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Expander Header="{Binding Name}"  IsExpanded="True"  >
+                                                    <Border Padding="5"> <ItemsPresenter   /></Border>
+                                                   
+                                                </Expander>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </GroupStyle.ContainerStyle>
+                        </GroupStyle>
+                    </ItemsControl.GroupStyle>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="2">
+                                <TextBlock >
+                                <Hyperlink TextDecorations="{x:Null}"  Command="{Binding ElementName=RootGrid, Path=DataContext.ViewDetailsCommand}"  CommandParameter="{Binding .}" ><Run Text="{Binding Title}"></Run></Hyperlink></TextBlock>
+                            </Border>
+                          
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </GroupBox>
+
+        <GroupBox Header="Books" Grid.Row="1">
+         
+                <ListBox  x:Name="BooksListBox" DisplayMemberPath="Title" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding BooksView.View}" VirtualizingPanel.IsVirtualizingWhenGrouping="True"  VirtualizingPanel.IsContainerVirtualizable="True"  VirtualizingStackPanel.IsVirtualizing="True"  VirtualizingStackPanel.VirtualizationMode="Recycling">
+                    <ListBox.GroupStyle>
+                        <GroupStyle>
+
+                            <GroupStyle.ContainerStyle>
+                                <Style TargetType="GroupItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Expander Header="{Binding Name}"  IsExpanded="True"  >
+                                                    <Border Padding="5">
+                                                        <ItemsPresenter   />
+                                                    </Border>
+
+                                                </Expander>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </GroupStyle.ContainerStyle>
+                        </GroupStyle>
+                    </ListBox.GroupStyle>
+             
+               
+                </ListBox>
+           
+        </GroupBox>
+
+
+        <GroupBox Header="Texts" Grid.Row="1" Grid.Column="2">
+            <ListView ItemsSource="{Binding ElementName=BooksListBox,Path=SelectedItem.Texts}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Title" Width="400"></GridViewColumn>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate >
+                                <ItemContainerTemplate>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <Button ToolTip="Edit Text"  Style="{DynamicResource ZoomButtonStyle}"  Background="{DynamicResource PicEdit}"  Command="{Binding ElementName=RootGrid, Path=DataContext.EditTextCommand}" CommandParameter="{Binding .}">Edit Text</Button>
+                                        <Border Width="10"/>
+                                        <Button ToolTip="Delete Text"  Style="{DynamicResource ZoomButtonStyle}"  Background="{DynamicResource PicRemove}"  Command="{Binding ElementName=RootGrid, Path=DataContext.DeleteTextCommand}" CommandParameter="{Binding .}">Remove Text</Button>
+
+                                    </StackPanel>
+                                    
+                                     
+                                </ItemContainerTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+        <Border Grid.Row="3"  Grid.ColumnSpan="3"  >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button ToolTip="New Text"  Style="{DynamicResource ZoomButtonStyle}"  Background="{DynamicResource PicNew}" Command="{Binding NewTextCommand}">New Text</Button>
+                 
+            </StackPanel>
+        </Border>
+        <xctk:BusyIndicator IsBusy="{Binding IsBusy}"  Grid.ColumnSpan="10" Grid.RowSpan="10" Margin="-5">
+            <xctk:BusyIndicator.OverlayStyle>
+                <Style TargetType="{x:Type Rectangle}">
+                    <Setter Property="Fill" Value="#6F808080"></Setter>
+                </Style>
+            </xctk:BusyIndicator.OverlayStyle>
+            <ContentControl  />
+        </xctk:BusyIndicator>
+    </Grid>
+</UserControl>

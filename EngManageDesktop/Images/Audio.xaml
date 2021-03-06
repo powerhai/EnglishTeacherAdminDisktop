@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DrawingBrush x:Key="PicAudio">
+        <DrawingBrush.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                <GeometryDrawing Brush="#FF000000" Geometry="F1 M1024,1024z M0,0z M866.3,23.6L439,154.1C387.2,169,344.5,222.9,344.5,274.2L344.5,723.1C344.5,723.1 315,702.2 246.2,712.1 145,726.6 64,803.8 64,885 64,966.2 146.2,1016 247.4,1001.6 348.5,987.2 422.8,912.4 422.8,831.2L422.8,397.7C422.8,361.8,465.9,346.4,465.9,346.4L841.2,228.3C841.2,228.3,881.6,214.4,881.6,252.7L881.6,610.4C881.6,610.4 844.5,588.5 775.8,596.4 674.7,609 593.6,684.7 593.6,765.9 593.6,847.1 675.6,898.4 776.8,886.5 878,874 960,798.3 960,717.1L960,89.8C959.5,39,917.7,9.09999999999999,866.3,23.6z" />
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+</ResourceDictionary>

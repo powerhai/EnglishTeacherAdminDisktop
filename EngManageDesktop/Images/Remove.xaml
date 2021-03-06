@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<DrawingBrush x:Key="PicRemove" Stretch="Uniform">
+		<DrawingBrush.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                <GeometryDrawing Brush="#FF000000" Geometry="F1 M1024,1024z M0,0z M860.29743713,70.4031609L679.0620783,70.4031609 627.28054825,18.62162963 368.37289311,18.62162963 316.59136307,70.4031609 135.35600423,70.4031609 135.35600423,173.96622222 860.29743713,173.96622222 M187.13753549,847.12612386C187.13753549,904.08580741,233.74091326,950.6891852,290.70059682,950.6891852L704.95284454,950.6891852C761.91252809,950.6891852,808.51590587,904.08580741,808.51590587,847.12612386L808.51590587,225.74775349 187.13753549,225.74775349 187.13753549,847.12612386z" />
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+	</DrawingBrush>
+</ResourceDictionary>
